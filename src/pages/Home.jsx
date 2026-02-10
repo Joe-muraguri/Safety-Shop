@@ -33,7 +33,7 @@ export default function Home() {
 
           {/* Products Grid */}
           {validProducts.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
+            <div className="grid grid-cols-2 gap-4 xs:gap-5 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
               {validProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -54,3 +54,4 @@ export default function Home() {
     </>
   );
 }
+
