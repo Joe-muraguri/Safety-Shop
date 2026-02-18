@@ -1,7 +1,8 @@
 import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
-import products from "../data/products";
-import { ShieldCheck, Truck, BadgeCheck, Headset, ArrowRight, Package } from "lucide-react";
+import RequestQuote from "../components/RequestQuote";
+import { useProducts } from "../hooks/useProducts";
+import { ShieldCheck, Truck, BadgeCheck, Headset, ArrowRight, Package, Loader } from "lucide-react";
 
 const features = [
   {
@@ -27,6 +28,8 @@ const features = [
 ];
 
 export default function Home() {
+  const { products, loading, error } = useProducts();
+
   const validProducts = products.filter(
     (product) => product && product.id && product.price != null
   );
@@ -61,7 +64,6 @@ export default function Home() {
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
             <div>
-              {/* Label */}
               <div className="inline-flex items-center gap-2 text-red-600 text-xs font-bold uppercase tracking-widest mb-3">
                 <span className="w-6 h-px bg-red-600" />
                 Our Catalogue
@@ -74,7 +76,6 @@ export default function Home() {
                 compliant, and confident on every job site.
               </p>
             </div>
-
             <a
               href="#contact"
               className="self-start md:self-auto inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-500 border border-red-200 hover:border-red-400 hover:bg-red-50 px-5 py-2.5 rounded-xl transition-all duration-200 whitespace-nowrap"
@@ -83,15 +84,32 @@ export default function Home() {
             </a>
           </div>
 
+          {/* Loading state */}
+          {loading && (
+            <div className="flex items-center justify-center py-24 gap-3 text-gray-400">
+              <Loader size={22} className="animate-spin text-red-400" />
+              <span className="text-sm font-medium">Loading products...</span>
+            </div>
+          )}
+
+          {/* Error state */}
+          {!loading && error && (
+            <div className="flex flex-col items-center justify-center py-16 text-center">
+              <p className="text-gray-500 text-sm">Could not load products. Showing default catalogue.</p>
+            </div>
+          )}
+
           {/* Products Grid */}
-          {validProducts.length > 0 ? (
+          {!loading && validProducts.length > 0 && (
             <div className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
               {validProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
-          ) : (
-            /* Empty state */
+          )}
+
+          {/* Empty state */}
+          {!loading && validProducts.length === 0 && (
             <div className="flex flex-col items-center justify-center py-24 text-center">
               <div className="w-16 h-16 rounded-2xl bg-blue-950/5 border border-blue-950/10 flex items-center justify-center mb-4">
                 <Package size={28} className="text-blue-300" />
