@@ -10,7 +10,7 @@ const products = [
   },
   {
     id: 2,
-    name: "Reflective Jacket",
+    name: "Reflective Jacketss",
     price: 1200,
     category: "Reflectors",
     shortDescription: "Class 2 certified, breathable mesh, adjustable sides",
