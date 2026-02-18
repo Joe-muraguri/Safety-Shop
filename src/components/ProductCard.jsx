@@ -1,89 +1,132 @@
+import { ShieldCheck, MessageCircle, Tag, ChevronRight } from "lucide-react";
+
 export default function ProductCard({ product }) {
   if (!product || !product.name || product.price == null) {
     return (
-      <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center text-gray-500">
+      <div className="bg-gray-50 rounded-xl p-4 border border-dashed border-gray-300 text-center text-gray-400 text-sm">
         Product unavailable
       </div>
     );
   }
 
   const formattedPrice = Number(product.price).toLocaleString("en-KE");
-  const oldPrice = product.oldPrice ? Number(product.oldPrice).toLocaleString("en-KE") : null;
+  const oldPrice = product.oldPrice
+    ? Number(product.oldPrice).toLocaleString("en-KE")
+    : null;
+
+  const discount =
+    product.oldPrice && product.price
+      ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+      : null;
+
+  const waLink = `https://wa.me/2547XXXXXXXX?text=Hi%20SafetyKE%2C%20I%27m%20interested%20in%20*${encodeURIComponent(product.name)}*%20at%20KES%20${formattedPrice}.%20Please%20advise.`;
 
   return (
-    <div className="
-      group bg-white rounded-lg overflow-hidden
-      border border-gray-200 shadow-sm
-      hover:shadow-md hover:border-gray-300
-      transition-all duration-200
-      flex flex-col
-      h-full
-    ">
-      {/* Image – more square, less tall */}
-      <div className="relative aspect-square md:aspect-[4/3] overflow-hidden bg-gray-50">
+    <div className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+
+      {/* Left red accent strip */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-600 z-10 rounded-l-2xl" />
+
+      {/* Image area */}
+      <div className="relative aspect-square overflow-hidden bg-gray-50">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           loading="lazy"
         />
 
-        {product.certified && (
-          <span className="
-            absolute top-2 left-2 text-xs font-medium
-            bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded
-          ">
-            Certified
-          </span>
-        )}
-      </div>
-
-      {/* Content – reduced vertical spacing */}
-      <div className="p-3.5 md:p-4 flex flex-col flex-grow">
-        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 line-clamp-2">
-          {product.name}
-        </h3>
-
-        {/* Description – very strict limit */}
-        {product.shortDescription && (
-          <p className="text-xs md:text-sm text-gray-600 mb-2.5 line-clamp-1 md:line-clamp-2">
-            {product.shortDescription}
-          </p>
-        )}
-
-        {/* Price – compact */}
-        <div className="mt-auto mb-3">
-          <span className="text-xl md:text-2xl font-bold text-gray-900">
-            KES {formattedPrice}
-          </span>
-          {oldPrice && (
-            <span className="ml-2 text-xs md:text-sm text-gray-500 line-through">
-              {oldPrice}
+        {/* Top badges */}
+        <div className="absolute top-2.5 right-2.5 flex flex-col gap-1.5 items-end">
+          {discount && (
+            <span className="bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-md shadow-sm">
+              -{discount}%
+            </span>
+          )}
+          {product.certified && (
+            <span className="bg-white/90 backdrop-blur-sm text-emerald-700 text-xs font-semibold px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1 border border-emerald-100">
+              <ShieldCheck size={10} />
+              Certified
             </span>
           )}
         </div>
 
-        {/* Button – noticeably shorter */}
-        <a
-          href={`https://wa.me/2547XXXXXXXX?text=Interested%20in%20${encodeURIComponent(product.name)}%20–%20KES%20${formattedPrice}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            flex items-center justify-center gap-2
-            bg-[#25D366] hover:bg-[#20b858] active:bg-[#1da851]
-            text-white font-medium text-sm
-            py-2.5 px-4 rounded-lg
-            transition-colors duration-150
-            active:scale-[0.98]
-            focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-1
-            w-full shadow-sm
-          "
-        >
-          <svg className="w-4.5 h-4.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-          </svg>
-          Enquire on WhatsApp
-        </a>
+        {/* Hover enquiry panel — slides up */}
+        <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-blue-950/95 backdrop-blur-sm p-4 flex flex-col gap-2">
+          <p className="text-white text-xs font-semibold uppercase tracking-wider opacity-60 mb-0.5">
+            Quick Enquire
+          </p>
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between gap-2 bg-[#25D366] hover:bg-[#20b858] text-white text-xs font-bold px-3 py-2.5 rounded-lg transition-colors"
+          >
+            <span className="flex items-center gap-2">
+              <MessageCircle size={14} className="fill-current" />
+              Chat on WhatsApp
+            </span>
+            <ChevronRight size={13} />
+          </a>
+          <a
+            href="#contact"
+            className="flex items-center justify-between gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors border border-white/10"
+          >
+            <span className="flex items-center gap-2">
+              <Tag size={13} />
+              Request Quote
+            </span>
+            <ChevronRight size={13} />
+          </a>
+        </div>
+      </div>
+
+      {/* Card body */}
+      <div className="pl-5 pr-4 pt-3.5 pb-4 flex flex-col flex-grow">
+
+        {/* Category tag */}
+        {product.category && (
+          <span className="text-xs text-red-500 font-semibold uppercase tracking-widest mb-1">
+            {product.category}
+          </span>
+        )}
+
+        {/* Name */}
+        <h3 className="text-sm md:text-base font-bold text-blue-950 leading-snug line-clamp-2 mb-1">
+          {product.name}
+        </h3>
+
+        {/* Description */}
+        {product.shortDescription && (
+          <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-3">
+            {product.shortDescription}
+          </p>
+        )}
+
+        {/* Price */}
+        <div className="mt-auto flex items-end justify-between gap-2">
+          <div className="flex flex-col">
+            <span className="text-lg md:text-xl font-extrabold text-blue-950 leading-none">
+              KES {formattedPrice}
+            </span>
+            {oldPrice && (
+              <span className="text-xs text-gray-400 line-through mt-0.5">
+                KES {oldPrice}
+              </span>
+            )}
+          </div>
+
+          {/* Inline WhatsApp icon button — visible on mobile (no hover available) */}
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Enquire on WhatsApp"
+            className="md:opacity-0 md:group-hover:opacity-100 flex-shrink-0 w-9 h-9 rounded-xl bg-[#25D366] hover:bg-[#20b858] flex items-center justify-center shadow-md shadow-green-200 transition-all duration-200"
+          >
+            <MessageCircle size={17} className="text-white fill-current" />
+          </a>
+        </div>
       </div>
     </div>
   );
