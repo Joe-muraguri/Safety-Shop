@@ -123,7 +123,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+254712345678"
+                  href="tel:+254717988187"
                   className="flex items-start gap-3 group"
                 >
                   <div className="w-7 h-7 rounded-md bg-blue-900 border border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:border-red-500 transition-colors">
@@ -131,7 +131,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <p className="text-xs text-blue-500 uppercase tracking-wider mb-0.5">Phone</p>
-                    <p className="text-sm text-blue-200 group-hover:text-white transition-colors">+254 7XX XXX XXX</p>
+                    <p className="text-sm text-blue-200 group-hover:text-white transition-colors">+254 717 988 187</p>
                   </div>
                 </a>
               </li>
@@ -145,7 +145,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <p className="text-xs text-blue-500 uppercase tracking-wider mb-0.5">Email</p>
-                    <p className="text-sm text-blue-200 group-hover:text-white transition-colors">info@safetyke.co.ke</p>
+                    <p className="text-sm text-blue-200 group-hover:text-white transition-colors">info@joysafetyke.co.ke</p>
                   </div>
                 </a>
               </li>

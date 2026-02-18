@@ -103,6 +103,8 @@ export default function Home() {
         </div>
       </section>
 
+      <RequestQuote />
+
       {/* ── CTA Banner ────────────────────────────────── */}
       <section className="bg-red-50 border-t border-red-100 py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">

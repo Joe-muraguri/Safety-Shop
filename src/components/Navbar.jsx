@@ -37,7 +37,7 @@ export default function Navbar() {
                 <Shield size={18} className="text-white" strokeWidth={2.5} />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
-                Safety<span className="text-red-500">KE</span>
+                JOYSafety<span className="text-red-500">KE</span>
               </span>
             </a>
 
@@ -68,7 +68,7 @@ export default function Navbar() {
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/2547XXXXXXXX?text=Hello%20SafetyKE%2C%20I%27d%20like%20to%20enquire%20about..."
+                href="https://wa.me/254717988187?text=Hello%20SafetyKE%2C%20I%27d%20like%20to%20enquire%20about..."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-md shadow-red-900/30 hover:shadow-red-900/50 transition-all duration-200"
@@ -137,7 +137,7 @@ export default function Navbar() {
           {/* Drawer Footer CTAs */}
           <div className="px-6 py-6 space-y-3 border-t border-blue-900">
             <a
-              href="tel:+2547XXXXXXXX"
+              href="tel:+254717988187"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl border border-blue-800 bg-blue-900/50 hover:bg-blue-900 text-blue-100 text-sm font-semibold transition"
             >
@@ -145,7 +145,7 @@ export default function Navbar() {
               Call Us
             </a>
             <a
-              href="https://wa.me/2547XXXXXXXX?text=Hello%20SafetyKE%2C%20I%27m%20interested%20in%20your%20safety%20equipment..."
+              href="https://wa.me/254717988187?text=Hello%20SafetyKE%2C%20I%27m%20interested%20in%20your%20safety%20equipment..."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
