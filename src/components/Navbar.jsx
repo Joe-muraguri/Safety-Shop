@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, MessageCircle, Shield } from "lucide-react";
 
 export default function Navbar() {
@@ -12,10 +13,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#products", label: "Products" },
-    { href: "#about", label: "About" },
-    { href: "#contact", label: "Contact" },
+    { to: "/", href: "#home", label: "Home" },
+    { to: "/#products", href: "#products", label: "Products" },
+    { to: "/about", href: "/about", label: "About" },
+    { to: "/#contact", href: "#contact", label: "Contact" },
   ];
 
   return (
@@ -32,26 +33,26 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <a href="/" className="flex items-center gap-2.5">
+            <Link to="/" className="flex items-center gap-2.5">
               <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center shadow-md shadow-red-900/40">
                 <Shield size={18} className="text-white" strokeWidth={2.5} />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
-                JOYSafety<span className="text-red-500">KE</span>
+                Safety<span className="text-red-500">KE</span>
               </span>
-            </a>
+            </Link>
 
             {/* Desktop Links */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.to}
                   className="text-blue-200 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-200" />
-                </a>
+                </Link>
               ))}
 
               {/* Divider */}
@@ -68,7 +69,7 @@ export default function Navbar() {
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/254717988187?text=Hello%20SafetyKE%2C%20I%27d%20like%20to%20enquire%20about..."
+                href="https://wa.me/2547XXXXXXXX?text=Hello%20SafetyKE%2C%20I%27d%20like%20to%20enquire%20about..."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-md shadow-red-900/30 hover:shadow-red-900/50 transition-all duration-200"
@@ -123,21 +124,21 @@ export default function Navbar() {
           {/* Drawer Links */}
           <nav className="flex flex-col flex-1 py-2">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.to}
                 onClick={() => setOpen(false)}
                 className="flex items-center px-6 py-4 text-blue-200 hover:text-white hover:bg-blue-900/50 border-l-2 border-transparent hover:border-red-500 text-sm font-medium transition-all duration-150"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Drawer Footer CTAs */}
           <div className="px-6 py-6 space-y-3 border-t border-blue-900">
             <a
-              href="tel:+254717988187"
+              href="tel:+2547XXXXXXXX"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl border border-blue-800 bg-blue-900/50 hover:bg-blue-900 text-blue-100 text-sm font-semibold transition"
             >
@@ -145,7 +146,7 @@ export default function Navbar() {
               Call Us
             </a>
             <a
-              href="https://wa.me/254717988187?text=Hello%20SafetyKE%2C%20I%27m%20interested%20in%20your%20safety%20equipment..."
+              href="https://wa.me/2547XXXXXXXX?text=Hello%20SafetyKE%2C%20I%27m%20interested%20in%20your%20safety%20equipment..."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
