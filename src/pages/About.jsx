@@ -1,10 +1,10 @@
 import { Shield, Target, Eye, Award, CheckCircle, ArrowRight, Handshake, Zap, Globe } from "lucide-react";
 
 const stats = [
-  { value: "10+", label: "Years in Business" },
+  { value: "3+", label: "Years in Business" },
   { value: "5,000+", label: "Products Delivered" },
   { value: "300+", label: "Clients Served" },
-  { value: "47", label: "Counties Reached" },
+  { value: "20+", label: "Counties Reached" },
 ];
 
 const values = [
@@ -119,13 +119,13 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-gray-600 text-base leading-relaxed">
                 <p>
-                  SafetyKE was founded in 2014 by a team that had seen firsthand the consequences of poor-quality safety equipment on Kenyan worksites. Substandard helmets, counterfeit gloves, vests that offered no real protection — the market was flooded with gear that looked the part but failed when it mattered most.
+                  SafetyKE was founded by a team that had seen firsthand the consequences of poor-quality safety equipment on Kenyan worksites. Substandard helmets, counterfeit gloves, vests that offered no real protection — the market was flooded with gear that looked the part but failed when it mattered most.
                 </p>
                 <p>
                   We built SafetyKE with one non-negotiable principle: <strong className="text-blue-950">we only stock what we would trust on our own family members.</strong> That standard has never changed, and it's what has earned us the trust of over 300 companies across Kenya.
                 </p>
                 <p>
-                  From a small Nairobi outlet in 2014 to a nationwide supplier today — our growth has been built entirely on referrals, repeat clients, and a reputation we guard fiercely.
+                  Our growth has been built entirely on referrals, repeat clients, and a reputation we guard fiercely.
                 </p>
               </div>
 
