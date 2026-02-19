@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 const slides = [
   {
     image:
-      "https://images.unsplash.com/photo-1503387762-592deb58caa5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      "images/hero/hero1.png",
     tag: "Industrial PPE",
     headline: ["Protect What", "Matters Most"],
     sub: "Premium safety gear — helmets, gloves, vests and more — built for Kenya's toughest jobs.",
@@ -17,7 +17,7 @@ const slides = [
   },
   {
     image:
-      "https://images.pexels.com/photos/4559605/pexels-photo-4559605.jpeg?auto=compress&cs=tinysrgb&w=1920",
+      "images/hero/hero2.png",
     tag: "Certified Equipment",
     headline: ["Certified.", "Durable. Trusted."],
     sub: "High-quality PPE that meets international safety standards — ready for construction, manufacturing & warehouses.",
@@ -25,7 +25,7 @@ const slides = [
   },
   {
     image:
-      "https://images.unsplash.com/photo-1581092160607-798f8a3d7c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      "images/hero/hero3.png",
     tag: "Full Protection",
     headline: ["Safety That Works", "As Hard As You Do"],
     sub: "Reflective gear, harnesses, respirators — everything your team needs to stay safe and compliant.",
@@ -33,7 +33,7 @@ const slides = [
   },
   {
     image:
-      "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920",
+      "images/hero/hero4.jpg",
     tag: "Nationwide Delivery",
     headline: ["Your Workforce.", "Our Priority."],
     sub: "Reliable, affordable industrial safety equipment — delivered across Kenya with fast support.",
@@ -67,7 +67,7 @@ export default function Hero() {
           <SwiperSlide key={i}>
             {/* Background Image */}
             <div
-              className="absolute inset-0 bg-cover bg-center scale-105 transition-transform duration-[8000ms]"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-[8000ms]"
               style={{ backgroundImage: `url('${slide.image}')` }}
             />
 
