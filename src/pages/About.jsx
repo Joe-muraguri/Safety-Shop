@@ -68,6 +68,8 @@ const partners = [
 export default function About() {
   return (
     <div id="about" className="bg-white">
+      <SEO title="About Us" description="Learn about JoySafetyKE — Kenya's trusted certified PPE supplier." page="about" />
+
 
       {/* ── Hero Banner ──────────────────────────────────────────── */}
       <section className="bg-blue-950 pt-24 pb-20 relative overflow-hidden">

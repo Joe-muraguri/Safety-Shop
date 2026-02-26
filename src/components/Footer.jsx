@@ -33,7 +33,7 @@ export default function Footer() {
             </p>
           </div>
           <a
-            href="https://wa.me/2547XXXXXXXX?text=Hi%20SafetyKE%2C%20I%27d%20like%20a%20bulk%20order%20quote."
+            href="https://wa.me/254701223920?text=Hi%20TelcoSafetyMart%2C%20I%27d%20like%20a%20bulk%20order%20quote."
             target="_blank"
             rel="noopener noreferrer"
             className="flex-shrink-0 inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md shadow-red-900/30"
@@ -55,7 +55,7 @@ export default function Footer() {
                 <Shield size={18} className="text-white" strokeWidth={2.5} />
               </div>
               <span className="text-xl font-bold tracking-tight">
-                Safety<span className="text-red-500">KE</span>
+                <span className="text-red-500">Telco Safety Mart</span>
               </span>
             </div>
             <p className="text-blue-300 text-sm leading-relaxed mb-6">
@@ -123,7 +123,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+254717988187"
+                  href="tel:+254701223920"
                   className="flex items-start gap-3 group"
                 >
                   <div className="w-7 h-7 rounded-md bg-blue-900 border border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:border-red-500 transition-colors">
@@ -131,13 +131,13 @@ export default function Footer() {
                   </div>
                   <div>
                     <p className="text-xs text-blue-500 uppercase tracking-wider mb-0.5">Phone</p>
-                    <p className="text-sm text-blue-200 group-hover:text-white transition-colors">+254 717 988 187</p>
+                    <p className="text-sm text-blue-200 group-hover:text-white transition-colors">+254 701 223 920</p>
                   </div>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@safetyke.co.ke"
+                  href="mailto:info@telcosafetymart.co.ke"
                   className="flex items-start gap-3 group"
                 >
                   <div className="w-7 h-7 rounded-md bg-blue-900 border border-blue-800 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:border-red-500 transition-colors">
@@ -145,7 +145,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <p className="text-xs text-blue-500 uppercase tracking-wider mb-0.5">Email</p>
-                    <p className="text-sm text-blue-200 group-hover:text-white transition-colors">info@joysafetyke.co.ke</p>
+                    <p className="text-sm text-blue-200 group-hover:text-white transition-colors">info@telcosafetymart.co.ke</p>
                   </div>
                 </a>
               </li>
@@ -176,7 +176,7 @@ export default function Footer() {
       <div className="border-t border-blue-900">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-blue-500 text-xs">
-            © 2026 SafetyKE. All rights reserved.
+            © 2026 Telco Safety Mart. All rights reserved.
           </p>
           <div className="flex items-center gap-1 text-blue-600 text-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-red-600" />

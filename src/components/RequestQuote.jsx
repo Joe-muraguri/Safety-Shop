@@ -48,7 +48,7 @@ export default function RequestQuote() {
     if (!isValid) return;
 
     const lines = [
-      `Hi SafetyKE 👋, I'd like to request a quote.`,
+      `Hi Telco Safety Mart 👋, I'd like to request a quote.`,
       ``,
       `*Name:* ${form.name}`,
       `*Phone:* ${form.phone}`,
@@ -61,7 +61,7 @@ export default function RequestQuote() {
       .filter(Boolean)
       .join("\n");
 
-    const waUrl = `https://wa.me/2547XXXXXXXX?text=${encodeURIComponent(lines)}`;
+    const waUrl = `https://wa.me/254701223920?text=${encodeURIComponent(lines)}`;
     window.open(waUrl, "_blank");
     setSubmitted(true);
   };
@@ -157,7 +157,7 @@ export default function RequestQuote() {
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="John Kamau"
+                        placeholder="Kathure Njoroge"
                         className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gray-200 focus:border-red-400 focus:ring-2 focus:ring-red-100 outline-none text-sm text-blue-950 placeholder-gray-400 transition-all"
                       />
                     </div>

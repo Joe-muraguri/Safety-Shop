@@ -3,6 +3,7 @@ import ProductCard from "../components/ProductCard";
 import RequestQuote from "../components/RequestQuote";
 import { useProducts } from "../hooks/useProducts";
 import { ShieldCheck, Truck, BadgeCheck, Headset, ArrowRight, Package, Loader } from "lucide-react";
+import SEO from "../components/SEO";
 
 const features = [
   {
@@ -36,6 +37,7 @@ export default function Home() {
 
   return (
     <div className="bg-white">
+      <SEO page="home" />
       <Hero />
 
       {/* ── Why Choose Us ─────────────────────────────── */}

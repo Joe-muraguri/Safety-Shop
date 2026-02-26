@@ -1,10 +1,27 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, MessageCircle, Shield } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavClick = (e, link) => {
+    if (link.to.startsWith("/#")) {
+      e.preventDefault();
+      const id = link.to.replace("/#", "");
+      if (window.location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+      setOpen(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -33,13 +50,20 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center shadow-md shadow-red-900/40">
-                <Shield size={18} className="text-white" strokeWidth={2.5} />
+            <Link to="/" className="flex items-center gap-3">
+              <img
+                src="/images/logo.png"
+                alt="Teclo Safety Mart Limited"
+                className="h-11 w-auto object-contain flex-shrink-0"
+              />
+              <div className="flex flex-col leading-none">
+                <span className="text-white font-extrabold text-xl tracking-tight">
+                  Teclo
+                </span>
+                <span className="text-red-400 font-semibold text-xs uppercase tracking-widest mt-0.5">
+                  Safety Mart Limited
+                </span>
               </div>
-              <span className="text-xl font-bold tracking-tight text-white">
-                Safety<span className="text-red-500">KE</span>
-              </span>
             </Link>
 
             {/* Desktop Links */}
@@ -48,6 +72,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   to={link.to}
+                  onClick={(e) => handleNavClick(e, link)}
                   className="text-blue-200 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
                 >
                   {link.label}
@@ -69,7 +94,7 @@ export default function Navbar() {
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/2547XXXXXXXX?text=Hello%20SafetyKE%2C%20I%27d%20like%20to%20enquire%20about..."
+                href="https://wa.me/254701223920?text=Hello%20TelcoSafetyMart%2C%20I%27d%20like%20to%20enquire%20about..."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-md shadow-red-900/30 hover:shadow-red-900/50 transition-all duration-200"
@@ -127,7 +152,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 to={link.to}
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleNavClick(e, link)}
                 className="flex items-center px-6 py-4 text-blue-200 hover:text-white hover:bg-blue-900/50 border-l-2 border-transparent hover:border-red-500 text-sm font-medium transition-all duration-150"
               >
                 {link.label}
@@ -138,7 +163,7 @@ export default function Navbar() {
           {/* Drawer Footer CTAs */}
           <div className="px-6 py-6 space-y-3 border-t border-blue-900">
             <a
-              href="tel:+2547XXXXXXXX"
+              href="tel:+254701223920"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl border border-blue-800 bg-blue-900/50 hover:bg-blue-900 text-blue-100 text-sm font-semibold transition"
             >
@@ -146,7 +171,7 @@ export default function Navbar() {
               Call Us
             </a>
             <a
-              href="https://wa.me/2547XXXXXXXX?text=Hello%20SafetyKE%2C%20I%27m%20interested%20in%20your%20safety%20equipment..."
+              href="https://wa.me/254701223920?text=Hello%20TelcoSafetyMart%2C%20I%27m%20interested%20in%20your%20safety%20equipment..."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
