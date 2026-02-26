@@ -19,7 +19,7 @@ export default function ProductCard({ product }) {
       ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
       : null;
 
-  const waLink = `https://wa.me/254717988187?text=Hi%20SafetyKE%2C%20I%27m%20interested%20in%20*${encodeURIComponent(product.name)}*%20at%20KES%20${formattedPrice}.%20Please%20advise.`;
+  const waLink = `https://wa.me/254701223920?text=Hi%20TelcoSafetyMart%2C%20I%27m%20interested%20in%20*${encodeURIComponent(product.name)}*%20at%20KES%20${formattedPrice}.%20Please%20advise.`;
 
   return (
     <div className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
