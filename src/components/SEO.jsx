@@ -3,7 +3,7 @@
 
 export default function SEO({ title, description, page = "home" }) {
   const siteName = "Teclo Safety Mart";
-  const siteUrl = "https://www.teclosafety.co.ke"; // update to your real domain
+  const siteUrl = "https://www.telcosafetymart.co.ke"; // update to your real domain
   const defaultDescription =
     "Kenya's trusted supplier of certified industrial safety equipment. PPE, helmets, gloves, vests & more — delivered nationwide. ISO certified gear for construction, manufacturing & logistics.";
 
