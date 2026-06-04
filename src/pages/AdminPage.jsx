@@ -6,7 +6,6 @@ import {
   ArrowUpDown, Image as ImageIcon, Tag, DollarSign, UploadCloud, Link,
 } from "lucide-react";
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "safetyke2026";
 
 const emptyForm = {
   name: "",
@@ -96,9 +95,11 @@ function Toast({ toast }) {
 // ── Main Admin Component ──────────────────────────────────────────────
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
+  const [email, setEmail] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const [loggingIn, setLoggingIn] = useState(false);
 
   const [products, setProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(false);
@@ -116,23 +117,34 @@ export default function AdminPage() {
 
   // ── Auth ──────────────────────────────────────────────────────────
   useEffect(() => {
-    const saved = sessionStorage.getItem("sk_admin");
-    if (saved === "1") setAuthed(true);
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session) setAuthed(true);
+    });
   }, []);
 
-  const handleLogin = () => {
-    if (passwordInput === ADMIN_PASSWORD) {
-      sessionStorage.setItem("sk_admin", "1");
-      setAuthed(true);
-      setLoginError("");
+  const handleLogin = async () => {
+    if (!email.trim() || !passwordInput) {
+      setLoginError("Please enter your email and password.");
+      return;
+    }
+    setLoggingIn(true);
+    setLoginError("");
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password: passwordInput,
+    });
+    setLoggingIn(false);
+    if (error) {
+      setLoginError("Incorrect email or password.");
     } else {
-      setLoginError("Incorrect password. Please try again.");
+      setAuthed(true);
     }
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("sk_admin");
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setAuthed(false);
+    setEmail("");
     setPasswordInput("");
   };
 
@@ -289,7 +301,20 @@ export default function AdminPage() {
           <div className="px-8 py-8 space-y-5">
             <div>
               <label className="block text-xs font-semibold text-blue-950 uppercase tracking-wider mb-2">
-                Admin Password
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+                placeholder="admin@teclosafety.co.ke"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-400 focus:ring-2 focus:ring-red-100 outline-none text-sm text-blue-950"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-blue-950 uppercase tracking-wider mb-2">
+                Password
               </label>
               <div className="relative">
                 <input
@@ -316,9 +341,10 @@ export default function AdminPage() {
             </div>
             <button
               onClick={handleLogin}
-              className="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md shadow-red-100"
+              disabled={loggingIn}
+              className="w-full bg-red-600 hover:bg-red-500 disabled:opacity-60 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md shadow-red-100"
             >
-              Sign In
+              {loggingIn ? "Signing in..." : "Sign In"}
             </button>
           </div>
         </div>

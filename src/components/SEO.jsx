@@ -63,7 +63,7 @@ export default function SEO({ title, description, page = "home" }) {
     setMeta("og:description", metaDescription, true);
     setMeta("og:site_name", siteName, true);
     setMeta("og:locale", "en_KE", true);
-    setMeta("og:image", `${siteUrl}/og-image.jpg`, true);
+    setMeta("og:image", `${siteUrl}/og-image.jpeg`, true);
     setMeta("og:image:width", "1200", true);
     setMeta("og:image:height", "630", true);
 
@@ -71,7 +71,7 @@ export default function SEO({ title, description, page = "home" }) {
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", fullTitle);
     setMeta("twitter:description", metaDescription);
-    setMeta("twitter:image", `${siteUrl}/og-image.jpg`);
+    setMeta("twitter:image", `${siteUrl}/og-image.jpeg`);
 
     // Canonical URL
     setLink("canonical", canonicalUrl);

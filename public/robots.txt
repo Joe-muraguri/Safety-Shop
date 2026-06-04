@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://www.joysafetyke.co.ke/sitemap.xml
+Sitemap: https://www.teclosafety.co.ke/sitemap.xml

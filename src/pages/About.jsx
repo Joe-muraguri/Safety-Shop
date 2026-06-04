@@ -1,4 +1,5 @@
 import { Shield, Target, Eye, Award, CheckCircle, ArrowRight, Handshake, Zap, Globe } from "lucide-react";
+import SEO from "../components/SEO";
 
 const stats = [
   { value: "3+", label: "Years in Business" },
@@ -68,7 +69,7 @@ const partners = [
 export default function About() {
   return (
     <div id="about" className="bg-white">
-      <SEO title="About Us" description="Learn about JoySafetyKE — Kenya's trusted certified PPE supplier." page="about" />
+      <SEO title="About Us" description="Learn about Teclo Safety Mart — Kenya's trusted certified PPE and industrial safety equipment supplier." page="about" />
 
 
       {/* ── Hero Banner ──────────────────────────────────────────── */}
