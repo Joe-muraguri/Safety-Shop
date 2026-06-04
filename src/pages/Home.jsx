@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      <SEO page="home" />
+      <SEO page="home" products={validProducts} />
       <Hero />
 
       {/* ── Why Choose Us ─────────────────────────────── */}

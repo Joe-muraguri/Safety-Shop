@@ -1,26 +1,22 @@
 // src/components/SEO.jsx
-// Usage: <SEO title="..." description="..." page="home" />
-
-export default function SEO({ title, description, page = "home" }) {
-  const siteName = "Teclo Safety Mart";
-  const siteUrl = "https://telcosafetymart.co.ke"; // update to your real domain
-  const defaultDescription =
-    "Kenya's trusted supplier of certified industrial safety equipment. PPE, helmets, gloves, vests & more — delivered nationwide. ISO certified gear for construction, manufacturing & logistics.";
+export default function SEO({ title, description, page = "home", products = [] }) {
+  const siteName = "TelcoSafetyMart";
+  const siteUrl = "https://telcosafetymart.co.ke";
+  const defaultDescription = "Kenya's trusted supplier of certified industrial safety equipment. PPE, helmets, gloves, vests & more — delivered nationwide. ISO certified gear for construction, manufacturing & logistics.";
 
   const fullTitle = title ? `${title} | ${siteName}` : `${siteName} — Certified Safety Equipment in Kenya`;
   const metaDescription = description || defaultDescription;
 
   const pageKeywords = {
     home: "safety equipment Kenya, PPE Kenya, industrial safety gear Nairobi, helmets Kenya, safety gloves Kenya, reflective vests Kenya, construction safety equipment, safety equipment supplier Kenya, KEBS certified PPE, safety equipment Nairobi",
-    about: "Teclo Safety Mart about, safety equipment company Kenya, certified PPE supplier Kenya, ISO certified safety gear, industrial safety Kenya",
+    about: "TelcoSafetyMart about, safety equipment company Kenya, certified PPE supplier Kenya, ISO certified safety gear, industrial safety Kenya",
     products: "buy safety equipment Kenya, PPE prices Kenya, safety helmets Kenya, safety gloves Nairobi, high visibility vests Kenya, respirators Kenya, safety footwear Kenya",
-    contact: "contact Teclo Safety Mart, safety equipment quote Kenya, bulk PPE order Kenya, safety equipment WhatsApp Kenya",
+    contact: "contact TelcoSafetyMart, safety equipment quote Kenya, bulk PPE order Kenya, safety equipment WhatsApp Kenya",
   };
 
   const keywords = pageKeywords[page] || pageKeywords.home;
   const canonicalUrl = page === "home" ? siteUrl : `${siteUrl}/${page}`;
 
-  // Inject tags into document head
   if (typeof document !== "undefined") {
     document.title = fullTitle;
 
@@ -56,7 +52,7 @@ export default function SEO({ title, description, page = "home" }) {
     setMeta("geo.position", "-1.2921;36.8219");
     setMeta("ICBM", "-1.2921, 36.8219");
 
-    // Open Graph (Facebook, WhatsApp previews)
+    // Open Graph
     setMeta("og:type", "website", true);
     setMeta("og:url", canonicalUrl, true);
     setMeta("og:title", fullTitle, true);
@@ -67,14 +63,66 @@ export default function SEO({ title, description, page = "home" }) {
     setMeta("og:image:width", "1200", true);
     setMeta("og:image:height", "630", true);
 
-    // Twitter card
+    // Twitter
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", fullTitle);
     setMeta("twitter:description", metaDescription);
     setMeta("twitter:image", `${siteUrl}/og-image.jpeg`);
 
-    // Canonical URL
     setLink("canonical", canonicalUrl);
+
+    // ── JSON-LD structured data ──────────────────────
+    // Remove existing script if any
+    const existing = document.querySelector('script[data-seo="ld-json"]');
+    if (existing) existing.remove();
+
+    const schema = [];
+
+    // Organization schema — always present
+    schema.push({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": siteName,
+      "url": siteUrl,
+      "logo": `${siteUrl}/og-image.jpeg`,
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+254701223920",
+        "contactType": "sales",
+        "areaServed": "KE"
+      }
+    });
+
+    // Product schemas — only if products passed
+    if (products.length > 0) {
+      products.forEach((p) => {
+        if (!p || p.price == null) return;
+        schema.push({
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": p.name,
+          "description": p.shortDescription || p.name,
+          "image": p.image,
+          "offers": {
+            "@type": "Offer",
+            "url": siteUrl,
+            "priceCurrency": "KES",
+            "price": String(p.price),
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "Organization",
+              "name": siteName
+            }
+          }
+        });
+      });
+    }
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.setAttribute("data-seo", "ld-json");
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
   }
 
   return null;
