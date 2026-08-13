@@ -50,17 +50,17 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2.5 group">
               <img
-                src="/images/logo.png"
-                alt="Teclo Safety Mart Limited"
-                className="h-11 w-auto object-contain flex-shrink-0"
+                src="/images/logo-icon.png"
+                alt="Teclo Safety Mart"
+                className="h-12 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)] transition-transform duration-200 group-hover:scale-105"
               />
               <div className="flex flex-col leading-none">
                 <span className="text-white font-extrabold text-xl tracking-tight">
                   Teclo
                 </span>
-                <span className="text-red-400 font-semibold text-xs uppercase tracking-widest mt-0.5">
+                <span className="text-red-400 font-semibold text-[10px] uppercase tracking-widest mt-0.5">
                   Safety Mart Limited
                 </span>
               </div>
