@@ -1,5 +1,5 @@
 // src/components/SEO.jsx
-export default function SEO({ title, description, page = "home", products = [] }) {
+export default function SEO({ title, description, page = "home", products = [], path }) {
   const siteName = "TelcoSafetyMart";
   const siteUrl = "https://telcosafetymart.co.ke";
   const defaultDescription = "Kenya's trusted supplier of certified industrial safety equipment. PPE, helmets, gloves, vests & more — delivered nationwide. ISO certified gear for construction, manufacturing & logistics.";
@@ -12,10 +12,11 @@ export default function SEO({ title, description, page = "home", products = [] }
     about: "TelcoSafetyMart about, safety equipment company Kenya, certified PPE supplier Kenya, ISO certified safety gear, industrial safety Kenya",
     products: "buy safety equipment Kenya, PPE prices Kenya, safety helmets Kenya, safety gloves Nairobi, high visibility vests Kenya, respirators Kenya, safety footwear Kenya",
     contact: "contact TelcoSafetyMart, safety equipment quote Kenya, bulk PPE order Kenya, safety equipment WhatsApp Kenya",
+    blog: "safety tips Kenya, PPE guides Kenya, workplace safety blog, industrial safety news Kenya, occupational safety Kenya",
   };
 
   const keywords = pageKeywords[page] || pageKeywords.home;
-  const canonicalUrl = page === "home" ? siteUrl : `${siteUrl}/${page}`;
+  const canonicalUrl = path ? `${siteUrl}${path}` : page === "home" ? siteUrl : `${siteUrl}/${page}`;
 
   if (typeof document !== "undefined") {
     document.title = fullTitle;
